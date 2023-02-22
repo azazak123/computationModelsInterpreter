@@ -3,12 +3,21 @@
   "version": "0.0.1",
   "description": "Interpreter for various models of computition",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "pnpm git-cz"
   },
-  "author": "",
   "license": "MIT",
-  "workspaces":[
-    "frontend",
-    "lib"
-  ]
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "private": true,
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
