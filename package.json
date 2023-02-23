@@ -4,7 +4,10 @@
   "description": "Interpreter for various models of computition",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "pnpm git-cz"
+    "commit": "pnpm git-cz",
+    "build": "pnpm tsc --build",
+    "dev": "pnpm tsc --build --watch",
+    "force-build": "pnpm tsc --build --force"
   },
   "license": "MIT",
   "workspaces": [
@@ -13,7 +16,8 @@
   ],
   "private": true,
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "typescript": "^4.9.5"
   },
   "config": {
     "commitizen": {
