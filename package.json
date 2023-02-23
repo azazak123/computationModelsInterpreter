@@ -7,7 +7,8 @@
     "commit": "pnpm git-cz",
     "build": "pnpm tsc --build",
     "dev": "pnpm tsc --build --watch",
-    "force-build": "pnpm tsc --build --force"
+    "force-build": "pnpm tsc --build --force",
+    "lint": "pnpm eslint ."
   },
   "license": "MIT",
   "workspaces": [
@@ -16,7 +17,10 @@
   ],
   "private": true,
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.34.0",
     "typescript": "^4.9.5"
   },
   "config": {
