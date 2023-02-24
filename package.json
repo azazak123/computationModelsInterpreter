@@ -3,12 +3,36 @@
   "version": "0.0.1",
   "description": "Interpreter for various models of computition",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "pnpm git-cz",
+    "build": "pnpm tsc --build",
+    "dev": "pnpm tsc --build --watch",
+    "force-build": "pnpm tsc --build --force",
+    "lint": "pnpm eslint .",
+    "format": "pnpm prettier --write .",
+    "test": "pnpm vitest run",
+    "test:watch": "pnpm vitest",
+    "test:coverage": "pnpm vitest run --coverage"
   },
-  "author": "",
   "license": "MIT",
-  "workspaces":[
-    "frontend",
-    "lib"
-  ]
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "private": true,
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "@vitest/coverage-c8": "^0.28.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

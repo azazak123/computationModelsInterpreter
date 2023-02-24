@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Projects */
+    "composite": true,
+
+    /* Language and Environment */
+    "target": "es2018",
+
+    /* Modules */
+    "module": "commonjs",
+    "isolatedModules": true,
+    "baseUrl": "./packages",
+    "paths": {},
+
+    /* Emit */
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmitOnError": true,
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  },
+
+  "exclude": ["node_modules", "dist"]
+}
