@@ -6,6 +6,7 @@
     "commit": "pnpm git-cz",
     "build": "pnpm tsc --build",
     "dev": "pnpm tsc --build --watch",
+    "start": "pnpm --filter ./apps/frontend dev",
     "force-build": "pnpm tsc --build --force",
     "lint": "pnpm eslint .",
     "format": "pnpm prettier --write .",
