@@ -6,12 +6,13 @@
     "commit": "pnpm git-cz",
     "build": "pnpm tsc --build",
     "dev": "pnpm tsc --build --watch",
+    "start": "pnpm --filter ./apps/frontend dev",
     "force-build": "pnpm tsc --build --force",
     "lint": "pnpm eslint .",
     "format": "pnpm prettier --write .",
-    "test": "pnpm vitest run",
-    "test:watch": "pnpm vitest",
-    "test:coverage": "pnpm vitest run --coverage"
+    "test": "pnpm vitest run -r apps/frontend",
+    "test:watch": "pnpm vitest -r apps/frontend",
+    "test:coverage": "pnpm vitest run --coverage -r apps/frontend"
   },
   "license": "MIT",
   "workspaces": [
