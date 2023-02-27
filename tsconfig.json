@@ -5,5 +5,5 @@
     "noEmit": true
   },
 
-  "references": []
+  "references": [{ "path": "apps/frontend" }]
 }
