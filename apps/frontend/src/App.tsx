@@ -1,13 +1,15 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import Header from "./components/header/Header";
 
 function App(): React.ReactElement {
-
   return (
-    <div>
-      <p>Fine</p>
-    </div>
+      <div>
+        <Header />
+        <main>
+          <p>Nice</p>
+        </main>
+      </div>
   );
-}
+};
 
 export default App;
