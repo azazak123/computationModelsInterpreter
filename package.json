@@ -4,10 +4,10 @@
   "description": "Interpreter for various models of computition",
   "scripts": {
     "commit": "pnpm git-cz",
-    "build": "pnpm tsc --build",
-    "dev": "pnpm tsc --build --watch",
+    "build": "pnpm tsc --project apps/*/",
+    "dev": "pnpm tsc --watch --project apps/*/",
     "start": "pnpm --filter ./apps/frontend dev",
-    "force-build": "pnpm tsc --build --force",
+    "force-build": "pnpm tsc --project apps/*/",
     "lint": "pnpm eslint .",
     "format": "pnpm prettier --write .",
     "test": "pnpm vitest run -r apps/frontend",

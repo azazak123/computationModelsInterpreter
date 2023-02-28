@@ -1,25 +1,24 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "target": "es2018",
-    "module": "commonjs",
     "isolatedModules": true,
     "baseUrl": "./packages",
     "paths": {
       "*": ["packages/*"]
     },
-    "declarationMap": true,
+    "moduleResolution": "node",
     "sourceMap": true,
     "noEmitOnError": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
     "strict": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true
   },
 
   "exclude": ["node_modules", "dist"]
