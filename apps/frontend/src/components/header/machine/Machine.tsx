@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Dropdown from "./dropdown/Dropdown";
 import InputOutput from "./inputOutput/InputOutput";
 
 function  Machine(): React.ReactElement {
@@ -12,6 +13,7 @@ function  Machine(): React.ReactElement {
 
     return (
         <div>
+            <Dropdown options={["1","2","3"]}/>
             <InputOutput
                 placeholder="Enter input"
                 value={inputValue}
