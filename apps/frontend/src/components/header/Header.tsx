@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import NavLinks from "./navLinks/Navlinks";
+import NavLinks from "./navLinks/NavLinks";
 
 function Header() : React.ReactElement {
     return (
