@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/header/Header";
-import Machine from "./components/header/machine/Machine";
+import Machine from "./components/machine/Machine";
 
 function App(): React.ReactElement {
   return (
