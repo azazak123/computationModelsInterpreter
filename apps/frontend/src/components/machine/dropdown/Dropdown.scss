@@ -1,0 +1,16 @@
+.dropdown {
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  height: 40px;
+  padding: 8px;
+  width: 200px;
+
+  option {
+    background-color: #fff;
+    color: #333;
+  }
+}
