@@ -1,4 +1,4 @@
-export class Token<T extends keyof Grammar | RequireTokenType> {
+export class Token<T extends keyof Grammar | RequiredTokenType> {
   constructor(
     readonly type: T,
     readonly lexeme: string,
@@ -7,6 +7,6 @@ export class Token<T extends keyof Grammar | RequireTokenType> {
   ) {}
 }
 
-export type RequireTokenType = "EOF";
+export type RequiredTokenType = "EOF";
 
 export type Grammar = Record<number | string | symbol, number | string>;
