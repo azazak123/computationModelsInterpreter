@@ -99,4 +99,39 @@ describe("Scanner", () => {
       expect(scanner.errorReporter.isError()).toBe(false);
     });
   });
+
+  describe("Special characters", () => {
+    enum Grammar {
+      PLUS = "+",
+      MINUS = "-",
+    }
+
+    it("Space", () => {
+      const source = "+ -";
+
+      const scanner = new Scanner(source, Grammar);
+
+      expect(scanner.scan()?.map((token) => token.type)).toStrictEqual([
+        Grammar.PLUS,
+        Grammar.MINUS,
+        "EOF",
+      ]);
+
+      expect(scanner.errorReporter.isError()).toBe(false);
+    });
+
+    it("Tabulation", () => {
+      const source = "+\t-";
+
+      const scanner = new Scanner(source, Grammar);
+
+      expect(scanner.scan()?.map((token) => token.type)).toStrictEqual([
+        Grammar.PLUS,
+        Grammar.MINUS,
+        "EOF",
+      ]);
+
+      expect(scanner.errorReporter.isError()).toBe(false);
+    });
+  });
 });
