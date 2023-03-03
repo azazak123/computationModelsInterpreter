@@ -59,4 +59,44 @@ describe("Scanner", () => {
       expect(scanner.errorReporter.isError()).toBe(true);
     });
   });
+
+  describe("Comments", () => {
+    enum Grammar {
+      LEFT_PAREN = "(",
+      RIGHT_PAREN = ")",
+    }
+
+    it("One-line comment", () => {
+      const source = "(()(\n//:\n)";
+
+      const scanner = new Scanner(source, Grammar);
+
+      expect(scanner.scan()?.map((token) => token.type)).toStrictEqual([
+        Grammar.LEFT_PAREN,
+        Grammar.LEFT_PAREN,
+        Grammar.RIGHT_PAREN,
+        Grammar.LEFT_PAREN,
+        Grammar.RIGHT_PAREN,
+        "EOF",
+      ]);
+
+      expect(scanner.errorReporter.isError()).toBe(false);
+    });
+
+    it("Last-line comment", () => {
+      const source = "(()(\n//:)";
+
+      const scanner = new Scanner(source, Grammar);
+
+      expect(scanner.scan()?.map((token) => token.type)).toStrictEqual([
+        Grammar.LEFT_PAREN,
+        Grammar.LEFT_PAREN,
+        Grammar.RIGHT_PAREN,
+        Grammar.LEFT_PAREN,
+        "EOF",
+      ]);
+
+      expect(scanner.errorReporter.isError()).toBe(false);
+    });
+  });
 });
