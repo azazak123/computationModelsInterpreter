@@ -35,15 +35,29 @@ export default class Scanner<T extends Grammar> {
         this.line++;
         break;
       }
-      default: {
-        const tokenType = this.lexemeToToken(char);
 
-        if (!tokenType) {
-          this.errorReporter.emitError(this.line, "Unexpected character");
-        } else {
-          this.addToken(tokenType, null);
+      case "/": {
+        if (this.match("/")) {
+          while (this.peek() !== "\n" && this.peek() !== "\0") this.consume();
+          break;
         }
+        this.analyzeChar(char);
+        break;
       }
+
+      default: {
+        this.analyzeChar(char);
+      }
+    }
+  }
+
+  analyzeChar(char: string) {
+    const tokenType = this.lexemeToToken(char);
+
+    if (!tokenType) {
+      this.errorReporter.emitError(this.line, "Unexpected character");
+    } else {
+      this.addToken(tokenType, null);
     }
   }
 
@@ -71,5 +85,17 @@ export default class Scanner<T extends Grammar> {
     this.tokens.push(
       new Token(this.tokenTypes[type], lexeme, this.line, literal)
     );
+  }
+
+  peek(): string {
+    if (this.isEnd()) return "\0";
+    return this.source[this.current] as string;
+  }
+
+  match(expected: string) {
+    if (this.peek() !== expected) return false;
+
+    this.current++;
+    return true;
   }
 }
