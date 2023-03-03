@@ -31,6 +31,11 @@ export default class Scanner<T extends Grammar> {
     const char = this.consume();
 
     switch (char) {
+      case " ":
+        break;
+      case "\t":
+        break;
+
       case "\n": {
         this.line++;
         break;
@@ -38,7 +43,7 @@ export default class Scanner<T extends Grammar> {
 
       case "/": {
         if (this.match("/")) {
-          while (this.peek() !== "\n" && this.peek() !== "\0") this.consume();
+          while (this.peek() !== "\n" && !this.isEnd()) this.consume();
           break;
         }
         this.analyzeChar(char);
