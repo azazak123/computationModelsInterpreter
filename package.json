@@ -38,7 +38,7 @@
     "**/*.{js,jsx,ts,tsx}": [
       "pnpm eslint"
     ],
-    "**/*.{js(x),ts(x),(s)css,json,html}": [
+    "**/*.{js,jsx,ts,tsx,css,scss,json,html}": [
       "pnpm prettier --write"
     ]
   },
