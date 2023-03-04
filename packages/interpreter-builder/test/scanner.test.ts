@@ -134,4 +134,75 @@ describe("Scanner", () => {
       expect(scanner.errorReporter.isError()).toBe(false);
     });
   });
+
+  describe("String literals", () => {
+    enum Grammar {
+      PLUS = "+",
+      MINUS = "-",
+    }
+
+    it("One literal", () => {
+      const source = '+"one"-';
+
+      const scanner = new Scanner(source, Grammar);
+      const tokens = scanner.scan();
+      expect(tokens).not.toBeNull();
+
+      expect(tokens?.map((token) => token.type)).toStrictEqual([
+        Grammar.PLUS,
+        "STRING",
+        Grammar.MINUS,
+        "EOF",
+      ]);
+
+      expect(
+        tokens?.filter((token) => token.literal).map((token) => token.literal)
+      ).toStrictEqual(["one"]);
+
+      expect(scanner.errorReporter.isError()).toBe(false);
+    });
+
+    it("Two literals", () => {
+      const source = '"one"-\n+\n"two"';
+
+      const scanner = new Scanner(source, Grammar);
+      const tokens = scanner.scan();
+      expect(tokens).not.toBeNull();
+
+      expect(tokens?.map((token) => token.type)).toStrictEqual([
+        "STRING",
+        Grammar.MINUS,
+        Grammar.PLUS,
+        "STRING",
+        "EOF",
+      ]);
+
+      expect(
+        tokens?.filter((token) => token.literal).map((token) => token.literal)
+      ).toStrictEqual(["one", "two"]);
+
+      expect(scanner.errorReporter.isError()).toBe(false);
+    });
+
+    it("Unterminated literal", () => {
+      const source = '-\n+\n"text';
+
+      const scanner = new Scanner(source, Grammar);
+      const tokens = scanner.scan();
+      expect(tokens).not.toBeNull();
+
+      expect(tokens?.map((token) => token.type)).toStrictEqual([
+        Grammar.MINUS,
+        Grammar.PLUS,
+        "STRING",
+        "EOF",
+      ]);
+
+      expect(
+        tokens?.filter((token) => token.literal).map((token) => token.literal)
+      ).toStrictEqual(["text"]);
+
+      expect(scanner.errorReporter.isError()).toBe(true);
+    });
+  });
 });
