@@ -7,6 +7,6 @@ export class Token<T extends keyof Grammar | RequiredTokenType> {
   ) {}
 }
 
-export type RequiredTokenType = "EOF";
+export type RequiredTokenType = "EOF" | "STRING";
 
 export type Grammar = Record<number | string | symbol, number | string>;

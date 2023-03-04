@@ -41,6 +41,10 @@ export default class Scanner<T extends Grammar> {
         break;
       }
 
+      case '"':
+        this.makeStrLiteral();
+        break;
+
       case "/": {
         if (this.match("/")) {
           while (this.peek() !== "\n" && !this.isEnd()) this.consume();
@@ -76,6 +80,23 @@ export default class Scanner<T extends Grammar> {
     return null;
   }
 
+  makeStrLiteral() {
+    while (this.peek() !== '"' && !this.isEnd()) {
+      if (this.peek() === "\n") this.line++;
+
+      this.consume();
+    }
+
+    if (this.isEnd()) {
+      this.errorReporter.emitError(this.line, "Unterminated string");
+    }
+
+    this.consume();
+
+    const str = this.source.slice(this.start + 1, this.current - 1);
+    this.addRequiredToken("STRING", str);
+  }
+
   isEnd(): boolean {
     return this.current >= this.source.length;
   }
@@ -85,11 +106,21 @@ export default class Scanner<T extends Grammar> {
   }
 
   addToken(type: keyof T, literal: number | string | null) {
-    const lexeme = this.source.slice(this.start, this.current);
+    const lexeme = this.getLexeme();
 
     this.tokens.push(
       new Token(this.tokenTypes[type], lexeme, this.line, literal)
     );
+  }
+
+  addRequiredToken(type: RequiredTokenType, literal: number | string | null) {
+    const lexeme = this.getLexeme();
+
+    this.tokens.push(new Token(type, lexeme, this.line, literal));
+  }
+
+  getLexeme(): string {
+    return this.source.slice(this.start, this.current);
   }
 
   peek(): string {
