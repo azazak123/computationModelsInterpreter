@@ -4,7 +4,7 @@ import Machine from "../../machine/Machine";
 function Home(): React.ReactElement {
   return (
     <div>
-        <Machine />
+      <Machine />
     </div>
   );
 }
