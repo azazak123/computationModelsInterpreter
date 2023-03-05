@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './MachineInfo.scss';
+import Machines, { type Machine } from './machineInfo/Data';
 
-interface Props {
-    title: string,
-    text: string
-}
+function MachineInfo(): React.ReactElement {
+  
+  const [info, setInfo] = useState<Machine | undefined>(undefined);
+  const { index } = useParams<{ index: string | undefined }>();
 
-function MachineInfo({title, text}: Props): React.ReactElement {
+  useEffect(() =>{
+    if (index !== undefined && Machines[parseInt(index, 10)] !== undefined) {
+      setInfo(Machines[parseInt(index, 10)]);
+    }
+  }, [index]);
+  
   return (
     <div className="machine-container">
-      <h1>{title}</h1>
-      <p>{text}</p>
+      <h1>{info?.name}</h1>
+      <p>{info?.description}</p>
       <h2>Components</h2>
       <ul>
         <li>Tape - an infinitely long tape divided into cells that can be read from and written to</li>
