@@ -9,7 +9,7 @@ function App(): React.ReactElement {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home />} />
         <Route path="machinesInfo/:index" element={<MachineInfo />} />
       </Routes>
     </div>
