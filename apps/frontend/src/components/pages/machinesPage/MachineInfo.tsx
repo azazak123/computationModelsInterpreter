@@ -16,26 +16,12 @@ function MachineInfo(): React.ReactElement {
   return (
     <div className="machine-container">
       <h1>{info?.name}</h1>
+      <p>Inventor: {info?.inventor}</p>
+      <p>Year:{info?.year}</p>
       <p>{info?.description}</p>
-      <h2>Components</h2>
+      <h2>Rules</h2>
       <ul>
-        <li>
-          Tape - an infinitely long tape divided into cells that can be read
-          from and written to
-        </li>
-        <li>
-          Head - a mechanism that moves left or right along the tape and reads
-          or writes symbols on each cell
-        </li>
-        <li>
-          State register - a finite set of states that the machine can be in at
-          any given time
-        </li>
-        <li>
-          Transition function - a set of rules that specify how the machine
-          should transition from one state to another based on the symbol read
-          by the head
-        </li>
+        {info?.rules.map((rule)=><li>{rule}</li>)}
       </ul>
     </div>
   );
