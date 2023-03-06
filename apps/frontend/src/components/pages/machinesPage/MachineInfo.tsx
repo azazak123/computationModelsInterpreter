@@ -4,8 +4,8 @@ import "./MachineInfo.scss";
 import Machines, { type Machine } from "./machineInfo/Data";
 
 function MachineInfo(): React.ReactElement {
-  const [info, setInfo] = useState<Machine | undefined>(undefined);
-  const { index } = useParams<{ index: string | undefined }>();
+  const [info, setInfo] = useState<Machine | undefined>();
+  const { index } = useParams<{ index?: string }>();
 
   useEffect(() => {
     if (index !== undefined && Machines[parseInt(index, 10)] !== undefined) {

@@ -9,18 +9,19 @@ interface Props {
 function HeaderDropdown({ title, children }: Props): React.ReactElement {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
-  function handleMouseEnter(): void {
-    setIsDropdownVisible(true);
-  }
-  function handleMouseLeave(): void {
-    setIsDropdownVisible(false);
+  function handleMouse(isVisible: boolean): void {
+    setIsDropdownVisible(isVisible);
   }
 
   return (
     <div
       className="header-dropdown-container"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => {
+        handleMouse(true);
+      }}
+      onMouseLeave={() => {
+        handleMouse(false);
+      }}
     >
       <button className="header-dropdown-title" type="button">
         {title}
