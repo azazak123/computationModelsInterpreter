@@ -1,0 +1,32 @@
+.header-dropdown-container {
+  position: relative;
+
+  .header-dropdown-title {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .header-dropdown-content {
+    background-color: black;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    min-width: 150px;
+    padding: 8px;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 1;
+  }
+}
