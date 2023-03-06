@@ -1,4 +1,7 @@
 import React from "react";
+import Machines, {
+  type Machine,
+} from "../../pages/machinesPage/machineInfo/Data";
 import HeaderDropdown from "../HeaderDropdown/HeaderDropdown";
 import "./NavLinks.scss";
 
@@ -11,12 +14,11 @@ function NavLinks(): React.ReactElement {
       <li>
         <HeaderDropdown title="Machines">
           <ul>
-            <li>
-              <a href="/machinesInfo/0">Turing machine</a>
-            </li>
-            <li>
-              <a href="/machinesInfo/1">Post machine</a>
-            </li>
+            {Machines.map((machine: Machine) => (
+              <li key={machine.id}>
+                <a href={`/machinesInfo/${machine.id}`}>{machine.name}</a>
+              </li>
+            ))}
           </ul>
         </HeaderDropdown>
       </li>

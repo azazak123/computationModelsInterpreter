@@ -1,4 +1,5 @@
 export interface Machine {
+  id: number;
   name: string;
   description: string;
   inventor: string;
@@ -9,6 +10,7 @@ export interface Machine {
 
 const Machines: Machine[] = [
   {
+    id: 0,
     name: "Turing Machine",
     description:
       "A theoretical computing machine that manipulates symbols on a tape according to a set of rules.",
@@ -30,6 +32,7 @@ const Machines: Machine[] = [
     ],
   },
   {
+    id: 1,
     name: "Post-Turing Machine",
     description:
       "A theoretical computing machine that manipulates symbols on a tape according to a set of rules. It is a variation of the original Turing Machine, introduced by Emil Post in 1936.",
