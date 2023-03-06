@@ -1,4 +1,5 @@
 import React from "react";
+import HeaderDropdown from "../HeaderDropdown/HeaderDropdown";
 import "./NavLinks.scss";
 
 function NavLinks(): React.ReactElement {
@@ -8,7 +9,16 @@ function NavLinks(): React.ReactElement {
         <a href="/">Home</a>
       </li>
       <li>
-        <a href="/machinesInfo">Machines</a>
+        <HeaderDropdown title="Machines">
+          <ul>
+            <li>
+              <a href="/machinesInfo/0">Turing machine</a>
+            </li>
+            <li>
+              <a href="/machinesInfo/1">Post machine</a>
+            </li>
+          </ul>
+        </HeaderDropdown>
       </li>
       <li>
         <a href="/apps/front/public">About</a>
